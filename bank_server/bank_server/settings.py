@@ -26,13 +26,19 @@ SECRET_KEY = "django-insecure-hy05u)7p+%=wwi!5cj@+2k+e$97%6b--7g2jw)q!gdf3v20b$u
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'backend',
+    'localhost',
+    'frontend',
+    '172.27.0.4'
+]
 
 
 # Application definition
 
 INSTALLED_APPS = [
     "bank_app",
+    'corsheaders',
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -44,11 +50,19 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
+    'corsheaders.middleware.CorsMiddleware',
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+]
+
+CORS_ALLOWED_ORIGINS = [
+    "http://frontend",
+    "http://localhost:3000",
+    "http://localhost:8000",
+    "http://backend"
 ]
 
 ROOT_URLCONF = "bank_server.urls"
