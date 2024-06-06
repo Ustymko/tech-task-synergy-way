@@ -29,7 +29,7 @@ services:
     ports:
       - "8000:8000"
     env_file:
-      - bank_server/.env
+      - .env
     depends_on:
       - db
 

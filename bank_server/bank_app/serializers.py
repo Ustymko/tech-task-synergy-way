@@ -7,7 +7,7 @@ class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ['id', 'first_name', 'last_name', 'email', 'image_uri', 'banks']
+        fields = ['id', 'password', 'first_name', 'last_name', 'password', 'email', 'banks']
 
     def create(self, validated_data):
         banks = validated_data.pop('banks', [])
@@ -21,12 +21,13 @@ class UserSerializer(serializers.ModelSerializer):
         instance.banks.set(banks)
         return instance
 
+
 class BankSerializer(serializers.ModelSerializer):
     users = serializers.PrimaryKeyRelatedField(queryset=User.objects.all(), many=True)
 
     class Meta:
         model = Bank
-        fields = ['id', 'name', 'country', 'swift_code', 'central_office_location', 'users']
+        fields = ['id', 'bank_name', 'routing_number', 'swift_bic', 'users']
 
     def create(self, validated_data):
         users = validated_data.pop('users', [])
