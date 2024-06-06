@@ -1,0 +1,27 @@
+.header{
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100px;
+  background-color: darkslategray;
+  width: 100vw;
+}
+
+.header nav{
+  display: flex;
+  justify-content: space-evenly;
+  font-size: 2em;
+}
+
+.header .nav-item{
+  text-align: center;
+  padding: 25px;
+  text-decoration: none;
+  color: white;
+}
+
+.separator {
+  width: 2px;
+  background-color: white;
+  height: 100px;
+}

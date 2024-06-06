@@ -1,0 +1,21 @@
+.banks-screen{
+  margin-top: 130px;
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.bank-item{
+  display: flex;
+  flex-direction: column;
+  border: 2px solid darkslategray;
+  border-radius: 10px;
+  padding: 50px;
+  margin-top: 20px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.buttons{
+  display: flex;
+  justify-content: space-between;
+}
