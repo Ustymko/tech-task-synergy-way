@@ -7,10 +7,10 @@ import Users from "./components/Users/Users";
 function App() {
   return (
     <BrowserRouter>
-      <Header/>
+      <Header />
       <Routes>
-        <Route path="/" element={<Banks/>}/>
-        <Route path="/users" element={<Users/>}/>
+        <Route path="/" element={<Banks />} />
+        <Route path="/users" element={<Users />} />
       </Routes>
     </BrowserRouter>
   );

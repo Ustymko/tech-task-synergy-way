@@ -1,21 +1,22 @@
-.header{
+.header {
   position: fixed;
   top: 0;
   left: 0;
   height: 100px;
   background-color: darkslategray;
   width: 100vw;
+  z-index: 100;
 }
 
-.header nav{
+.header nav {
   display: flex;
   justify-content: space-evenly;
   font-size: 2em;
 }
 
-.header .nav-item{
+.header .nav-item {
   text-align: center;
-  padding: 25px;
+  margin: auto 0;
   text-decoration: none;
   color: white;
 }
