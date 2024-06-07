@@ -3,12 +3,17 @@ from rest_framework import viewsets, status
 from rest_framework.response import Response
 
 from .models import User, Bank
-from .serializers import BankSerializer, UserSerializer
+from .serializers import BankSerializer, UserSerializer, BankWritableSerializer
 
 
 class BankViewSet(viewsets.ModelViewSet):
     queryset = Bank.objects.all()
     serializer_class = BankSerializer
+
+    def get_serializer_class(self):
+        if self.action in ['update', 'partial_update']:
+            return BankWritableSerializer
+        return BankSerializer
 
     def destroy(self, request, *args, **kwargs):
         instance = self.get_object()
