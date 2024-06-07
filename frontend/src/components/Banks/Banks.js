@@ -3,11 +3,11 @@ import { useEffect, useState } from "react";
 import Button from 'react-bootstrap/Button';
 import "bootstrap/dist/css/bootstrap.min.css"
 import {
-  baseRequest,
   getRandomBank,
   saveBank,
   deleteBank,
-} from "../../API/api";
+  getAllBanks
+} from "../../API/banks";
 
 function Banks() {
   const [banks, setBanks] = useState([]);
@@ -52,7 +52,7 @@ function Banks() {
   const handleBankEdit = (id) => {};
 
   useEffect(() => {
-    baseRequest({ urlPath: "banks/" })
+    getAllBanks()
       .then((res) => {
         setBanks(res.data);
       })
