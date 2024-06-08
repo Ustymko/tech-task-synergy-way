@@ -1,13 +1,13 @@
 import "./Banks.css";
 import { useEffect, useState } from "react";
-import Button from 'react-bootstrap/Button';
-import "bootstrap/dist/css/bootstrap.min.css"
+import Button from "react-bootstrap/Button";
+import "bootstrap/dist/css/bootstrap.min.css";
 import {
   getRandomBank,
   saveBank,
   deleteBank,
-  getAllBanks
-} from "../../API/banks";
+  getAllBanks,
+} from "../../API/banks-api";
 
 function Banks() {
   const [banks, setBanks] = useState([]);
@@ -63,7 +63,6 @@ function Banks() {
 
   return (
     <div className="banks-screen">
-      
       <div className="table-container">
         <table>
           <thead>
@@ -72,7 +71,9 @@ function Banks() {
               <th>Swift_bic</th>
               <th>Modify</th>
               <th>
-                <Button variant="success" onClick={handleAddNewBankButton}>Add</Button>
+                <Button variant="success" onClick={handleAddNewBankButton}>
+                  Add
+                </Button>
               </th>
             </tr>
           </thead>
@@ -85,7 +86,7 @@ function Banks() {
                   <Button
                     variant="primary"
                     className="edit-button"
-                    style={{marginRight: '20px'}}
+                    style={{ marginRight: "20px" }}
                     onClick={() => handleBankEdit(bank.id)}
                   >
                     Edit

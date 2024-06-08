@@ -5,13 +5,15 @@ import {
   getAllUsers,
   saveUser,
   deleteUser,
-} from "../../API/users";
+} from "../../API/users-api";
 import { Button } from "react-bootstrap";
-import "bootstrap/dist/css/bootstrap.min.css"
+import "bootstrap/dist/css/bootstrap.min.css";
+import { useNavigate } from "react-router-dom";
 
 function Users() {
   const [users, setUsers] = useState([]);
   const [newUsers, setNewUsers] = useState([]);
+  const navigate = useNavigate();
 
   const handleAddNewUserButton = () => {
     getRandomUser()
@@ -48,14 +50,22 @@ function Users() {
       });
   };
 
+  const handleUserEditButtonClick = (user) => {
+    navigate("/user-details", {
+      state: {
+        user: user,
+      },
+    });
+  };
+
   useEffect(() => {
     getAllUsers()
-    .then((res) => {
-      setUsers(res.data)
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+      .then((res) => {
+        setUsers(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }, [newUsers]);
 
   return (
@@ -69,7 +79,9 @@ function Users() {
               <th>Email</th>
               <th>Modify</th>
               <th>
-                <Button variant="success" onClick={handleAddNewUserButton}>Add</Button>
+                <Button variant="success" onClick={handleAddNewUserButton}>
+                  Add
+                </Button>
               </th>
             </tr>
           </thead>
@@ -83,8 +95,8 @@ function Users() {
                   <Button
                     variant="primary"
                     className="edit-button"
-                    style={{marginRight: '20px'}}
-                    // onClick={() => handleUserEdit(user.id)}
+                    style={{ marginRight: "20px" }}
+                    onClick={() => handleUserEditButtonClick(user)}
                   >
                     Edit
                   </Button>

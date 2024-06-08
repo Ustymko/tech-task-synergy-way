@@ -22,6 +22,14 @@ export async function deleteUser(id) {
   });
 }
 
+export async function updateUser(id, user) {
+  return await baseRequest({
+    urlPath: `users/${id}/`,
+    method: "PUT",
+    body: user
+  })
+}
+
 export async function getRandomUser() {
   return await getRandomObjectBaseRequest({ urlPath: "users" });
 }

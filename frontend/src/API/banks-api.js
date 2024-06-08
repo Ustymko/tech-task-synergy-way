@@ -7,6 +7,13 @@ export async function getAllBanks() {
   });
 }
 
+export async function getBankById(id){
+  return await baseRequest({
+    urlPath: `banks/${id}/`,
+    method: "GET"
+  })
+}
+
 export async function saveBank(bank) {
   return await baseRequest({
     urlPath: "banks/",
