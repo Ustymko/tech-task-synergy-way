@@ -14,14 +14,14 @@ services:
     ports:
       - "3307:3306"
     healthcheck:
-      test: ["CMD", "mysql", "-h", "localhost", "-u", "root", "-p${DB_ROOT_PASSWORD}", "-e", "SELECT 1"]
+      test: ["CMD", "mysql", "-h", "localhost", "-u", "root", "-p${MYSQL_ROOT_PASSWORD}", "-e", "SELECT 1"]
       timeout: 20s
       retries: 10
 
   backend:
     build:
       context: ./bank_server
-    container_name: bank_server_container
+    container_name: backend_server_container
     command: sh -c "python3 manage.py migrate --noinput && python manage.py runserver 0.0.0.0:8000"
     restart: always
     volumes:
@@ -37,7 +37,7 @@ services:
     build:
       context: ./frontend
     container_name: frontend_server_container
-    command: sh -c "npm start"
+    command: sh -c "serve -s build"
     restart: always
     volumes:
       - ./frontend:/app
