@@ -2,7 +2,7 @@ import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
 import Button from "react-bootstrap/Button";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./UserDetails.css";
+import "./Details.css";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState, useRef } from "react";
 import { getAllBanks } from "../../API/banks-api";
@@ -106,10 +106,11 @@ function UserDetails() {
         document.removeEventListener("click", handleClickOutside, true);
       };
     }
+    // eslint-disable-next-line
   }, [shouldUpdate]);
   return (
-    <div className="user-details-screen">
-      <div className="user-details-screen__top-panel">
+    <div className="details-screen">
+      <div className="details-screen__top-panel">
         <h1>Edit User</h1>
         <Button onClick={handleUpdateUser} variant="success">
           Save changes

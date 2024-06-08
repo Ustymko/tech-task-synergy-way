@@ -1,11 +1,11 @@
-.user-details-screen{
+.details-screen {
   width: 1200px;
   margin: 0 auto;
   margin-top: 120px;
   text-align: center;
 }
 
-.user-details-screen__top-panel{
+.details-screen__top-panel {
   display: flex;
   margin-bottom: 20px;
   justify-content: space-evenly;

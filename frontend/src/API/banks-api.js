@@ -7,11 +7,11 @@ export async function getAllBanks() {
   });
 }
 
-export async function getBankById(id){
+export async function getBankById(id) {
   return await baseRequest({
     urlPath: `banks/${id}/`,
-    method: "GET"
-  })
+    method: "GET",
+  });
 }
 
 export async function saveBank(bank) {
@@ -26,6 +26,14 @@ export async function deleteBank(id) {
   return await baseRequest({
     urlPath: `banks/${id}`,
     method: "DELETE",
+  });
+}
+
+export async function updateBank(id, bank) {
+  return await baseRequest({
+    urlPath: `banks/${id}/`,
+    method: "PUT",
+    body: bank,
   });
 }
 

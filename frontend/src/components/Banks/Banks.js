@@ -8,10 +8,12 @@ import {
   deleteBank,
   getAllBanks,
 } from "../../API/banks-api";
+import { useNavigate } from "react-router-dom";
 
 function Banks() {
   const [banks, setBanks] = useState([]);
   const [newBanks, setNewBanks] = useState([]);
+  const navigate = useNavigate();
 
   const handleAddNewBankButton = () => {
     getRandomBank()
@@ -49,7 +51,13 @@ function Banks() {
       });
   };
 
-  const handleBankEdit = (id) => {};
+  const handleBankEditButtonClick = (bank) => {
+    navigate("/bank-details", {
+      state: {
+        bank: bank,
+      },
+    });
+  };
 
   useEffect(() => {
     getAllBanks()
@@ -87,7 +95,7 @@ function Banks() {
                     variant="primary"
                     className="edit-button"
                     style={{ marginRight: "20px" }}
-                    onClick={() => handleBankEdit(bank.id)}
+                    onClick={() => handleBankEditButtonClick(bank)}
                   >
                     Edit
                   </Button>
