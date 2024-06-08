@@ -22,10 +22,10 @@ class UserSerializer(serializers.ModelSerializer):
         return user
 
     def update(self, instance, validated_data):
-        banks = validated_data.pop('banks', [])
-        instance = super().update(instance, validated_data)
-        instance.banks.set(banks)
-        return instance
+        users_data = validated_data.pop('banks', None)
+        if users_data is not None:
+            instance.users.set(users_data)
+        return super().update(instance, validated_data)
 
 
 class UserWritableSerializer(serializers.ModelSerializer):

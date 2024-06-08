@@ -3,7 +3,7 @@ from rest_framework import viewsets, status
 from rest_framework.response import Response
 
 from .models import User, Bank
-from .serializers import BankSerializer, UserSerializer, BankWritableSerializer
+from .serializers import BankSerializer, UserSerializer, BankWritableSerializer, UserWritableSerializer
 
 
 class BankViewSet(viewsets.ModelViewSet):
@@ -32,6 +32,11 @@ class BankViewSet(viewsets.ModelViewSet):
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
+
+    def get_serializer_class(self):
+        if self.action in ['update', 'partial_update']:
+            return UserWritableSerializer
+        return UserSerializer
 
 
 def test(request):
