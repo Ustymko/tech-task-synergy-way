@@ -48,6 +48,9 @@ function Banks() {
       })
       .catch((err) => {
         console.log(err);
+        if(err.response.status === 400){
+          alert("Deleting the bank with users assigned isn't possible!")
+        }
       });
   };
 
